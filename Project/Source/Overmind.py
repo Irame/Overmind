@@ -16,6 +16,8 @@ from pysc2.lib import features
 from pysc2.lib import actions
 from pysc2.agents import base_agent
 
+from QLearning import QLearningAgent
+
 from tensorflow import *
 
 from pysc2.lib import app
@@ -69,7 +71,7 @@ def main(unused_argv):
             minimap_size_px=(FLAGS.minimap_resolution, FLAGS.minimap_resolution),
             visualize=FLAGS.render) as env:
         env = available_actions_printer.AvailableActionsPrinter(env)
-        agent = FirstTestAgent()
+        agent = QLearningAgent()
         run_loop.run_loop([agent], env, FLAGS.max_agent_steps)
 
 if __name__ == "__main__":
